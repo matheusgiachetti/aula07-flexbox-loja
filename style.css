@@ -311,3 +311,143 @@ p {
         white-space: nowrap;
     }
 }
+
+
+/* =========================================================
+   BANNER PRINCIPAL (HERO)
+   Primeira seção da página, com a chamada da coleção.
+   ========================================================= */
+
+/* BOX MODEL 06 - seção do banner */
+/* FLEX 07 - centraliza o bloco de texto na vertical dentro da altura mínima */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 560px;
+    padding: var(--espaco-xxl) var(--espaco-lg);
+    border-bottom: 1px solid var(--cor-borda);
+    /* afasta o banner da próxima seção */
+    margin-bottom: var(--espaco-xl);
+    background-color: var(--cor-fundo-alt);
+}
+
+/* BOX MODEL 07 - bloco de texto do banner
+   A borda esquerda terracota funciona como detalhe visual */
+/* FLEX 08 - empilha selo, título, texto e botões em coluna */
+.hero-conteudo {
+    display: flex;
+    flex-direction: column;
+    /* alinha os filhos à esquerda em vez de esticá-los */
+    align-items: flex-start;
+    gap: var(--espaco-lg);
+    width: 100%;
+    max-width: var(--largura-max);
+    padding: var(--espaco-sm) 0 var(--espaco-sm) var(--espaco-xl);
+    border-left: 2px solid var(--cor-destaque);
+    margin: 0 auto;
+}
+
+/* BOX MODEL 08 - selo da coleção em caixa alta */
+/* FLEX 09 - centraliza o texto dentro do selo */
+.hero-selo {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 var(--espaco-md);
+    border: 1px solid var(--cor-apoio);
+    margin-bottom: var(--espaco-xs);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cor-apoio);
+}
+
+/* Título grande, limitado em largura para quebrar em duas ou três linhas */
+.hero-titulo {
+    max-width: 16ch;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    letter-spacing: -0.01em;
+}
+
+/* Frase de chamada com largura confortável de leitura */
+.hero-texto {
+    max-width: 52ch;
+    font-size: 1.125rem;
+}
+
+/* FLEX 10 - coloca os dois botões lado a lado e deixa quebrar em telas estreitas */
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-md);
+}
+
+
+/* =========================================================
+   BOTÕES
+   Estilo base compartilhado e duas variações.
+   ========================================================= */
+
+/* BOX MODEL 09 - botão base */
+/* FLEX 11 - centraliza o texto do botão nos dois eixos */
+.botao {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
+    height: 52px;
+    padding: 0 28px;
+    border: 1px solid var(--cor-texto);
+    margin-top: var(--espaco-sm);
+    border-radius: var(--raio-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color var(--transicao), color var(--transicao), border-color var(--transicao);
+}
+
+/* Botão principal: fundo escuro, texto claro */
+.botao-principal {
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+
+/* No hover o principal ganha a cor terracota */
+.botao-principal:hover,
+.botao-principal:focus-visible {
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+}
+
+/* Botão secundário: só o contorno, fundo transparente */
+.botao-secundario {
+    background-color: transparent;
+    color: var(--cor-texto);
+}
+
+/* No hover o secundário é preenchido */
+.botao-secundario:hover,
+.botao-secundario:focus-visible {
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+
+/* Telas menores: banner mais baixo e menos recuo lateral */
+@media (max-width: 600px) {
+    .hero {
+        min-height: auto;
+        padding: var(--espaco-xl) var(--espaco-md);
+    }
+
+    .hero-conteudo {
+        padding-left: var(--espaco-lg);
+    }
+
+    /* botões ocupam a largura toda, um embaixo do outro */
+    .botao {
+        width: 100%;
+    }
+}
