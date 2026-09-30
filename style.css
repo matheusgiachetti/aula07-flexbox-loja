@@ -451,3 +451,174 @@ p {
         width: 100%;
     }
 }
+
+
+/* =========================================================
+   ESTRUTURA DAS SEÇÕES
+   Regras reaproveitadas por todas as seções da página.
+   ========================================================= */
+
+/* Container padrão: centraliza o conteúdo e limita a largura */
+.secao {
+    width: 100%;
+    max-width: var(--largura-max);
+    padding: 0 var(--espaco-lg);
+    margin: 0 auto var(--espaco-xxl);
+    /* compensa a altura do cabeçalho fixo ao pular pelos links do menu */
+    scroll-margin-top: 96px;
+}
+
+/* BOX MODEL 10 - cabeçalho de cada seção, com linha embaixo */
+/* FLEX 12 - título na esquerda e descrição na direita, alinhados pela base */
+.secao-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* em telas estreitas a descrição desce para baixo do título */
+    flex-wrap: wrap;
+    gap: var(--espaco-md) var(--espaco-xl);
+    width: 100%;
+    padding-bottom: var(--espaco-lg);
+    border-bottom: 1px solid var(--cor-borda);
+    margin-bottom: var(--espaco-xl);
+}
+
+/* FLEX 13 - empilha o rótulo pequeno em cima do título */
+.secao-titulo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-sm);
+}
+
+/* Rótulo em caixa alta acima do título da seção */
+.secao-rotulo {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cor-destaque);
+}
+
+/* Título da seção */
+.secao-titulo {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+}
+
+/* Descrição curta, limitada para não virar uma linha muito longa */
+.secao-descricao {
+    max-width: 38ch;
+}
+
+
+/* =========================================================
+   CATEGORIAS
+   Cards que se reorganizam sozinhos conforme a largura.
+   ========================================================= */
+
+/* FLEX 14 - lista de categorias com quebra de linha
+   flex-wrap: os cards que não cabem descem para a próxima linha
+   align-content: controla como as LINHAS se distribuem no eixo
+   vertical quando há mais de uma (aqui ficam juntas no topo) */
+.categorias-lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--espaco-md);
+}
+
+/* FLEX 15 - cada item da lista
+   flex-basis: 180px é a largura "ideal" de partida
+   flex-grow: 1 faz os cards crescerem para ocupar a sobra da linha
+   display: flex faz o link de dentro esticar até a altura toda */
+.categoria-item {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 180px;
+}
+
+/* BOX MODEL 11 - card da categoria */
+/* FLEX 16 - organiza número, nome, descrição e rodapé em coluna */
+.categoria-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-sm);
+    width: 100%;
+    min-height: 220px;
+    padding: var(--espaco-lg);
+    border: 1px solid var(--cor-borda);
+    /* margem inferior só aparece quando os cards quebram de linha */
+    margin-bottom: var(--espaco-xs);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+    transition: border-color var(--transicao), transform var(--transicao);
+}
+
+/* No hover o card sobe um pouco e a borda escurece */
+.categoria-card:hover,
+.categoria-card:focus-visible {
+    border-color: var(--cor-texto);
+    transform: translateY(-3px);
+}
+
+/* BOX MODEL 12 - quadradinho com o número da categoria */
+/* FLEX 17 - centraliza o número dentro do quadrado */
+.categoria-numero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border: 1px solid var(--cor-borda);
+    margin-bottom: var(--espaco-md);
+    border-radius: var(--raio-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cor-texto-suave);
+}
+
+/* Nome da categoria */
+.categoria-nome {
+    font-size: 1.35rem;
+}
+
+/* Descrição curta da categoria */
+.categoria-descricao {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* FLEX 18 - quantidade na esquerda e "Ver" na direita
+   margin-top: auto empurra o rodapé para o fim do card */
+.categoria-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: var(--espaco-md);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Quantidade de peças em cinza */
+.categoria-quantidade {
+    color: var(--cor-texto-suave);
+}
+
+/* "Ver" em terracota */
+.categoria-seta {
+    color: var(--cor-destaque);
+}
+
+/* Celular: dois cards por linha; o quinto ocupa a linha toda */
+@media (max-width: 600px) {
+    .categoria-item {
+        flex-basis: calc(50% - var(--espaco-md));
+    }
+
+    .categoria-card {
+        min-height: 200px;
+        padding: var(--espaco-md);
+    }
+}
