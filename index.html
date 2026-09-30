@@ -28,7 +28,38 @@
     <!-- Faixa fina no topo com aviso de frete e trocas -->
 
     <!-- ===================== CABEÇALHO ===================== -->
-    <!-- Logo da Trama Store, menu de navegação e ícones de busca/sacola -->
+    <!-- Logo da Trama Store, menu de navegação e sacola de compras -->
+    <header class="cabecalho">
+
+        <!-- Container que limita a largura e alinha os três blocos em linha -->
+        <div class="cabecalho-conteudo">
+
+            <!-- Logo em texto: leva de volta ao início da página -->
+            <a href="#inicio" class="logo" aria-label="Trama Store, voltar ao início">
+                <span class="logo-nome">Trama</span>
+                <span class="logo-complemento">Store</span>
+            </a>
+
+            <!-- Menu principal com links para as seções da página -->
+            <nav class="menu" aria-label="Menu principal">
+                <ul class="menu-lista">
+                    <li><a href="#inicio" class="menu-link">Início</a></li>
+                    <li><a href="#categorias" class="menu-link">Categorias</a></li>
+                    <li><a href="#produtos" class="menu-link">Peças</a></li>
+                    <li><a href="#destaque" class="menu-link">Destaque</a></li>
+                    <li><a href="#sobre" class="menu-link">Sobre</a></li>
+                    <li><a href="#contato" class="menu-link">Contato</a></li>
+                </ul>
+            </nav>
+
+            <!-- Sacola em texto com o contador de itens ao lado -->
+            <a href="#produtos" class="sacola" aria-label="Sacola de compras, 0 itens">
+                <span class="sacola-texto">Sacola</span>
+                <span class="sacola-contador">0</span>
+            </a>
+
+        </div>
+    </header>
 
     <main>
 

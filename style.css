@@ -153,3 +153,161 @@ h4 {
 p {
     color: var(--cor-texto-suave);
 }
+
+
+/* =========================================================
+   CABEÇALHO
+   Barra fixa no topo com logo, menu e sacola.
+   ========================================================= */
+
+/* Fica grudado no topo enquanto a página rola */
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--cor-fundo);
+}
+
+/* BOX MODEL 01 - container do cabeçalho
+   width + height, padding, border e margin definidos */
+/* FLEX 01 - distribui logo, menu e sacola na mesma linha */
+.cabecalho-conteudo {
+    display: flex;
+    /* logo na esquerda, menu no meio e sacola na direita */
+    justify-content: space-between;
+    /* centraliza tudo na vertical dentro dos 72px de altura */
+    align-items: center;
+    gap: var(--espaco-lg);
+    width: 100%;
+    max-width: var(--largura-max);
+    height: 72px;
+    padding: 0 var(--espaco-lg);
+    border-bottom: 1px solid var(--cor-borda);
+    /* margin auto nas laterais centraliza o bloco na tela */
+    margin: 0 auto;
+}
+
+/* BOX MODEL 02 - logo com moldura, lembrando uma etiqueta de roupa */
+/* FLEX 02 - coloca "Trama" e "Store" lado a lado, alinhados pela base */
+.logo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    height: 40px;
+    padding: 4px 12px;
+    border: 1.5px solid var(--cor-texto);
+    margin-right: var(--espaco-md);
+    border-radius: var(--raio-sm);
+}
+
+/* Nome principal da marca em fonte serifada */
+.logo-nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* "Store" menor, em caixa alta e espaçado */
+.logo-complemento {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cor-texto-suave);
+}
+
+/* FLEX 03 - itens do menu em linha, com espaço igual entre eles */
+.menu-lista {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-lg);
+}
+
+/* BOX MODEL 03 - links do menu
+   A borda inferior começa transparente e ganha cor no hover */
+/* FLEX 04 - centraliza o texto do link na vertical dentro da altura fixa */
+.menu-link {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 2px;
+    border-bottom: 2px solid transparent;
+    margin: 0 var(--espaco-xs);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cor-texto-suave);
+    transition: color var(--transicao), border-color var(--transicao);
+}
+
+/* Link em foco ou com o mouse em cima fica escuro e sublinhado */
+.menu-link:hover,
+.menu-link:focus-visible {
+    color: var(--cor-texto);
+    border-bottom-color: var(--cor-destaque);
+}
+
+/* BOX MODEL 04 - botão da sacola */
+/* FLEX 05 - alinha o texto "Sacola" e o contador lado a lado */
+.sacola {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-sm);
+    height: 40px;
+    padding: 0 var(--espaco-md);
+    border: 1px solid var(--cor-borda);
+    margin-left: var(--espaco-sm);
+    border-radius: var(--raio-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: border-color var(--transicao);
+}
+
+.sacola:hover,
+.sacola:focus-visible {
+    border-color: var(--cor-texto);
+}
+
+/* BOX MODEL 05 - bolinha com a quantidade de itens na sacola */
+/* FLEX 06 - centraliza o número dentro do círculo nos dois eixos */
+.sacola-contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    padding: 2px;
+    border: 1px solid var(--cor-texto);
+    margin-left: 2px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+
+/* Telas menores: o menu desce para uma segunda linha e pode rolar
+   para os lados, já que não usamos JavaScript para abrir/fechar */
+@media (max-width: 860px) {
+    .cabecalho-conteudo {
+        /* permite que o menu quebre para a linha de baixo */
+        flex-wrap: wrap;
+        height: auto;
+        padding: var(--espaco-md);
+        row-gap: var(--espaco-sm);
+    }
+
+    .menu {
+        /* order joga o menu para depois da sacola */
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .menu-lista {
+        gap: var(--espaco-md);
+    }
+
+    .menu-link {
+        white-space: nowrap;
+    }
+}
