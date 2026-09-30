@@ -1,0 +1,6 @@
+# Documentos da atividade (relatórios e enunciados) não vão para o repositório
+*.pdf
+*.docx
+
+# Configurações locais do assistente
+.claude/
