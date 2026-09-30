@@ -1,0 +1,155 @@
+/* =========================================================
+   TRAMA STORE - Folha de estilo principal
+   Aula 7 - Box Model e Flexbox
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   VARIÁVEIS (custom properties)
+   Guardamos cores, fontes e medidas aqui para reaproveitar
+   em todo o arquivo. Se precisar trocar uma cor, muda só aqui.
+   --------------------------------------------------------- */
+:root {
+    /* Cores de fundo: tons de linho cru, lembrando tecido natural */
+    --cor-fundo: #f6f3ee;
+    --cor-fundo-alt: #ebe5dc;
+    --cor-superficie: #ffffff;
+
+    /* Cores de texto: grafite em vez de preto puro, mais suave de ler */
+    --cor-texto: #1f1d1a;
+    --cor-texto-suave: #6b655d;
+
+    /* Cor de destaque: terracota, usada em botões e preços em promoção */
+    --cor-destaque: #b5532f;
+    --cor-destaque-escura: #8f3f22;
+
+    /* Verde oliva para selos como "novo" e "em estoque" */
+    --cor-apoio: #5d6b4a;
+
+    /* Linhas e bordas discretas */
+    --cor-borda: #d9d2c7;
+
+    /* Famílias de fonte (carregadas pelo Google Fonts no HTML) */
+    --fonte-titulo: "Fraunces", Georgia, serif;
+    --fonte-texto: "Manrope", Arial, sans-serif;
+
+    /* Escala de espaçamento usada em margin, padding e gap */
+    --espaco-xs: 4px;
+    --espaco-sm: 8px;
+    --espaco-md: 16px;
+    --espaco-lg: 24px;
+    --espaco-xl: 48px;
+    --espaco-xxl: 80px;
+
+    /* Arredondamento das bordas */
+    --raio-sm: 4px;
+    --raio-md: 8px;
+
+    /* Largura máxima do conteúdo para não esticar em telas grandes */
+    --largura-max: 1200px;
+
+    /* Duração padrão das transições (hover de botões e links) */
+    --transicao: 0.2s ease;
+}
+
+
+/* ---------------------------------------------------------
+   RESET SIMPLES
+   Remove margens e paddings padrão do navegador e faz
+   width/height incluírem padding e borda (box-sizing).
+   --------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    /* border-box: a largura declarada já inclui padding + borda */
+    box-sizing: border-box;
+}
+
+/* Rolagem suave ao clicar nos links do menu */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Configuração geral do corpo da página */
+body {
+    font-family: var(--fonte-texto);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    /* Deixa as fontes mais nítidas em alguns navegadores */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Imagens nunca ultrapassam o container e não deixam espaço embaixo */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Links herdam a cor do texto e ficam sem sublinhado */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Remove os marcadores das listas (usadas em menus e grades) */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Botões e campos usam a mesma fonte do resto do site */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* Cursor de "mãozinha" nos botões */
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+
+/* ---------------------------------------------------------
+   TIPOGRAFIA BASE
+   Títulos com fonte serifada e tamanhos decrescentes.
+   --------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--cor-texto);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+/* Parágrafos com cor um pouco mais clara que os títulos */
+p {
+    color: var(--cor-texto-suave);
+}
