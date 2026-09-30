@@ -622,3 +622,251 @@ p {
         padding: var(--espaco-md);
     }
 }
+
+
+/* =========================================================
+   VITRINE DE PRODUTOS
+   Grade flexível: 4 cards por linha no computador,
+   2 no tablet e 1 no celular.
+   ========================================================= */
+
+/* FLEX 19 - grade da vitrine
+   flex-wrap: wrap deixa os cards descerem de linha
+   align-content: flex-start mantém as linhas juntas no topo,
+   sem espalhar espaço extra entre elas */
+.vitrine-grade {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--espaco-lg);
+}
+
+/* BOX MODEL 13 - card do produto */
+/* FLEX 20 - imagem em cima e informações embaixo, em coluna
+   Como item da grade:
+   flex-grow: 1 → o card cresce para preencher a linha
+   flex-shrink: 1 → pode encolher se faltar espaço
+   flex-basis: 25% menos a parte do gap → 4 cards por linha */
+.produto {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(25% - 18px);
+    /* largura mínima: abaixo disso o card ficaria apertado demais */
+    min-width: 200px;
+    padding: var(--espaco-sm);
+    border: 1px solid var(--cor-borda);
+    /* soma com o gap: 32px entre linhas e 24px entre colunas */
+    margin-bottom: var(--espaco-sm);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+    transition: border-color var(--transicao);
+}
+
+.produto:hover {
+    border-color: var(--cor-texto-suave);
+}
+
+/* Moldura da foto: proporção 4:5, comum em fotos de roupa.
+   O fundo bege aparece enquanto a foto não carrega */
+.produto-imagem {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--raio-sm);
+    background-color: var(--cor-fundo-alt);
+}
+
+/* A foto cobre toda a moldura sem distorcer */
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* texto alternativo discreto caso a imagem não exista */
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+    transition: transform 0.4s ease;
+}
+
+/* Zoom leve na foto ao passar o mouse no card */
+.produto:hover .produto-imagem img {
+    transform: scale(1.03);
+}
+
+/* BOX MODEL 14 - selo sobre a foto ("Mais vendida", "Novo", "-20%")
+   Fica no canto superior esquerdo; a margin afasta da borda da foto */
+/* FLEX 21 - centraliza o texto do selo na vertical */
+.produto-selo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid var(--cor-borda);
+    margin: var(--espaco-sm);
+    border-radius: var(--raio-sm);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
+}
+
+/* Variação do selo para peças novas: verde oliva */
+.produto-selo-novo {
+    border-color: var(--cor-apoio);
+    background-color: var(--cor-apoio);
+    color: var(--cor-superficie);
+}
+
+/* Variação do selo de promoção: terracota */
+.produto-selo-promocao {
+    border-color: var(--cor-destaque);
+    background-color: var(--cor-destaque);
+    color: var(--cor-superficie);
+}
+
+/* FLEX 22 - informações do produto em coluna
+   flex-grow: 1 faz esse bloco ocupar a altura que sobra no card,
+   assim os botões ficam alinhados embaixo em todos os cards */
+.produto-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 6px;
+    padding: var(--espaco-md) var(--espaco-sm) var(--espaco-sm);
+}
+
+/* Categoria em caixa alta, bem pequena */
+.produto-categoria {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cor-texto-suave);
+}
+
+/* Nome do produto usa a fonte do texto para ficar mais legível em tamanho pequeno */
+.produto-nome {
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Tecido e cor */
+.produto-detalhe {
+    font-size: 0.85rem;
+}
+
+/* FLEX 23 - preço, preço antigo e parcelas na mesma linha,
+   alinhados pela linha de base do texto */
+.produto-precos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px var(--espaco-sm);
+    margin-top: var(--espaco-xs);
+}
+
+/* Preço atual em destaque */
+.produto-preco {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+/* Preço com desconto em terracota */
+.produto-preco-promocional {
+    color: var(--cor-destaque);
+}
+
+/* Preço antigo riscado */
+.produto-preco-antigo {
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+}
+
+/* Parcelamento em texto menor */
+.produto-parcela {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+}
+
+/* FLEX 24 - tamanhos lado a lado, quebrando de linha se precisar */
+.produto-tamanhos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: var(--espaco-xs) 0 var(--espaco-md);
+}
+
+/* BOX MODEL 15 - quadradinho de cada tamanho */
+/* FLEX 25 - centraliza a letra do tamanho nos dois eixos */
+.tamanho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 34px;
+    height: 30px;
+    padding: 0 6px;
+    border: 1px solid var(--cor-borda);
+    margin: 0;
+    border-radius: var(--raio-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Tamanho esgotado: riscado, mais claro e com borda tracejada */
+.tamanho-esgotado {
+    border-style: dashed;
+    color: #b3aca2;
+    text-decoration: line-through;
+}
+
+/* Tamanho único ganha mais espaço interno */
+.tamanho-unico {
+    padding: 0 var(--espaco-md);
+}
+
+/* BOX MODEL 16 - botão "Adicionar à sacola"
+   margin-top: auto empurra o botão para o fim do card */
+/* FLEX 26 - centraliza o texto do botão */
+.botao-sacola {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    padding: 0 var(--espaco-md);
+    border: 1px solid var(--cor-texto);
+    margin-top: auto;
+    border-radius: var(--raio-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color var(--transicao), color var(--transicao);
+}
+
+.botao-sacola:hover,
+.botao-sacola:focus-visible {
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+
+/* Tablet: 2 cards por linha (50% menos metade do gap) */
+@media (max-width: 1024px) {
+    .produto {
+        flex-basis: calc(50% - 12px);
+    }
+}
+
+/* Celular: 1 card por linha, ocupando a largura toda */
+@media (max-width: 520px) {
+    .produto {
+        flex-basis: 100%;
+    }
+}

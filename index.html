@@ -79,7 +79,7 @@
                 <!-- Frase de chamada explicando a proposta da loja -->
                 <p class="hero-texto">
                     Linho, algodão orgânico e sarja em cortes retos e cores neutras.
-                    São só dez peças, costuradas em pequenas tiragens por uma
+                    São só oito peças, costuradas em pequenas tiragens por uma
                     oficina parceira em Sorocaba.
                 </p>
 
@@ -179,7 +179,211 @@
         </section>
 
         <!-- ===================== VITRINE DE PRODUTOS ===================== -->
-        <!-- Grade com as 8 a 10 peças da loja (foto, nome, preço e botão) -->
+        <!-- Grade com as 8 peças da loja (foto, nome, preço, tamanhos e botão) -->
+        <section class="secao" id="produtos">
+
+            <!-- Cabeçalho da seção, mesmo padrão das categorias -->
+            <div class="secao-cabecalho">
+                <div class="secao-titulo-grupo">
+                    <span class="secao-rotulo">Vitrine</span>
+                    <h2 class="secao-titulo">Todas as peças</h2>
+                </div>
+                <p class="secao-descricao">
+                    8 peças disponíveis. Parcelamento em até 3x sem juros no cartão.
+                </p>
+            </div>
+
+            <!-- Grade de produtos: os cards quebram de linha conforme a tela -->
+            <div class="vitrine-grade">
+
+                <!-- Produto 1: camiseta básica -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/camiseta-basica.jpg" alt="Camiseta básica off-white dobrada sobre fundo claro" width="600" height="750" loading="lazy">
+                        <span class="produto-selo">Mais vendida</span>
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Camisetas</span>
+                        <h3 class="produto-nome">Camiseta Básica</h3>
+                        <p class="produto-detalhe">Algodão orgânico &middot; Off-white</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 89,90</span>
+                            <span class="produto-parcela">3x de R$ 29,97</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">PP</li>
+                            <li class="tamanho">P</li>
+                            <li class="tamanho">M</li>
+                            <li class="tamanho">G</li>
+                            <li class="tamanho">GG</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 2: camiseta listrada (tamanho GG esgotado) -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/camiseta-listrada.jpg" alt="Camiseta listrada azul-marinho e cru" width="600" height="750" loading="lazy">
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Camisetas</span>
+                        <h3 class="produto-nome">Camiseta Listrada</h3>
+                        <p class="produto-detalhe">Malha de algodão &middot; Marinho e cru</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 99,90</span>
+                            <span class="produto-parcela">3x de R$ 33,30</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">P</li>
+                            <li class="tamanho">M</li>
+                            <li class="tamanho">G</li>
+                            <li class="tamanho tamanho-esgotado" aria-label="GG, esgotado">GG</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 3: calça reta de sarja -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/calca-reta-sarja.jpg" alt="Calça reta de sarja cor caramelo" width="600" height="750" loading="lazy">
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Calças</span>
+                        <h3 class="produto-nome">Calça Reta de Sarja</h3>
+                        <p class="produto-detalhe">Sarja de algodão &middot; Caramelo</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 229,90</span>
+                            <span class="produto-parcela">3x de R$ 76,63</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">36</li>
+                            <li class="tamanho">38</li>
+                            <li class="tamanho">40</li>
+                            <li class="tamanho">42</li>
+                            <li class="tamanho">44</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 4: calça pantalona em promoção (preço antigo riscado) -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/calca-pantalona-linho.jpg" alt="Calça pantalona de linho cor areia" width="600" height="750" loading="lazy">
+                        <span class="produto-selo produto-selo-promocao">-20%</span>
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Calças</span>
+                        <h3 class="produto-nome">Calça Pantalona de Linho</h3>
+                        <p class="produto-detalhe">Linho &middot; Areia</p>
+                        <div class="produto-precos">
+                            <s class="produto-preco-antigo">R$ 259,90</s>
+                            <span class="produto-preco produto-preco-promocional">R$ 207,90</span>
+                            <span class="produto-parcela">3x de R$ 69,30</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">36</li>
+                            <li class="tamanho tamanho-esgotado" aria-label="38, esgotado">38</li>
+                            <li class="tamanho">40</li>
+                            <li class="tamanho">42</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 5: jaqueta jeans -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/jaqueta-jeans.jpg" alt="Jaqueta jeans clássica azul médio" width="600" height="750" loading="lazy">
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Jaquetas</span>
+                        <h3 class="produto-nome">Jaqueta Jeans Clássica</h3>
+                        <p class="produto-detalhe">Denim rígido &middot; Azul médio</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 349,90</span>
+                            <span class="produto-parcela">3x de R$ 116,63</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">P</li>
+                            <li class="tamanho">M</li>
+                            <li class="tamanho">G</li>
+                            <li class="tamanho">GG</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 6: vestido midi, lançamento da coleção -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/vestido-midi-linho.jpg" alt="Vestido midi de linho cor terracota" width="600" height="750" loading="lazy">
+                        <span class="produto-selo produto-selo-novo">Novo</span>
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Vestidos</span>
+                        <h3 class="produto-nome">Vestido Midi de Linho</h3>
+                        <p class="produto-detalhe">Linho &middot; Terracota</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 279,90</span>
+                            <span class="produto-parcela">3x de R$ 93,30</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">P</li>
+                            <li class="tamanho">M</li>
+                            <li class="tamanho">G</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 7: vestido chemise -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/vestido-chemise.jpg" alt="Vestido chemise listrado verde e cru" width="600" height="750" loading="lazy">
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Vestidos</span>
+                        <h3 class="produto-nome">Vestido Chemise Listrado</h3>
+                        <p class="produto-detalhe">Viscose &middot; Verde e cru</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 249,90</span>
+                            <span class="produto-parcela">3x de R$ 83,30</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho">PP</li>
+                            <li class="tamanho">P</li>
+                            <li class="tamanho">M</li>
+                            <li class="tamanho">G</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+                <!-- Produto 8: bolsa tote (tamanho único) -->
+                <article class="produto">
+                    <div class="produto-imagem">
+                        <img src="imagens/bolsa-tote-lona.jpg" alt="Bolsa tote de lona cor natural" width="600" height="750" loading="lazy">
+                    </div>
+                    <div class="produto-info">
+                        <span class="produto-categoria">Acessórios</span>
+                        <h3 class="produto-nome">Bolsa Tote de Lona</h3>
+                        <p class="produto-detalhe">Lona de algodão &middot; Natural</p>
+                        <div class="produto-precos">
+                            <span class="produto-preco">R$ 139,90</span>
+                            <span class="produto-parcela">3x de R$ 46,63</span>
+                        </div>
+                        <ul class="produto-tamanhos" aria-label="Tamanhos disponíveis">
+                            <li class="tamanho tamanho-unico">Único</li>
+                        </ul>
+                        <button type="button" class="botao-sacola">Adicionar à sacola</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
 
         <!-- ===================== DESTAQUE DA COLEÇÃO ===================== -->
         <!-- Bloco com uma peça em destaque e seus detalhes -->
