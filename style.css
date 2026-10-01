@@ -50,6 +50,11 @@
 
     /* Duração padrão das transições (hover de botões e links) */
     --transicao: 0.2s ease;
+
+    /* Sombras usadas nos efeitos de hover: sombra de cor grafite
+       bem transparente, em vez de preto, para ficar mais suave */
+    --sombra-card: 0 12px 28px rgba(31, 29, 26, 0.10);
+    --sombra-botao: 0 6px 16px rgba(31, 29, 26, 0.18);
 }
 
 
@@ -1664,6 +1669,193 @@ p {
     max-width: 40ch;
     font-size: 0.8rem;
     color: #8f887e;
+}
+
+
+/* =========================================================
+   EFEITOS DE HOVER
+   Cards e botões reagem quando o mouse passa por cima:
+   - transition: faz a mudança acontecer aos poucos
+   - transform: levanta (translateY) ou aumenta (scale) o elemento
+   - box-shadow: cria uma sombra que dá sensação de profundidade
+   As mesmas regras valem para :focus-visible, assim quem navega
+   pelo teclado (Tab) também vê o destaque.
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   CARDS
+   --------------------------------------------------------- */
+
+/* Transição única para todos os cards: borda, posição e sombra */
+.categoria-card,
+.produto,
+.depoimento,
+.contato-item,
+.vantagem-icone {
+    transition: border-color var(--transicao), transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Card de categoria: sobe e ganha sombra */
+.categoria-card:hover,
+.categoria-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card);
+}
+
+/* Card de produto: sobe, ganha sombra e a borda escurece */
+.produto:hover,
+.produto:focus-within {
+    border-color: var(--cor-texto-suave);
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card);
+}
+
+/* Foto do produto aproxima um pouco (o card esconde o que sobra) */
+.produto:hover .produto-imagem img {
+    transform: scale(1.05);
+}
+
+/* Selo sobre a foto acompanha o movimento com um leve deslocamento */
+.produto-selo {
+    transition: transform 0.25s ease;
+}
+
+.produto:hover .produto-selo {
+    transform: translateX(2px);
+}
+
+/* Tamanhos disponíveis: borda escurece ao passar o mouse
+   (os esgotados não mudam, pois não podem ser escolhidos) */
+.tamanho {
+    transition: border-color var(--transicao), background-color var(--transicao);
+}
+
+.tamanho:not(.tamanho-esgotado):hover {
+    border-color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+}
+
+/* Depoimentos e contato: sobem levemente com sombra */
+.depoimento:hover,
+.contato-item:hover {
+    border-color: var(--cor-texto-suave);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-card);
+}
+
+/* Vantagens: o círculo do ícone fica terracota e gira um pouco */
+.vantagem:hover .vantagem-icone {
+    border-color: var(--cor-destaque);
+    background-color: var(--cor-destaque);
+    color: var(--cor-superficie);
+    transform: rotate(-8deg) scale(1.08);
+}
+
+/* Foto do destaque aproxima devagar */
+.destaque-imagem img {
+    transition: transform 0.6s ease;
+}
+
+.destaque-imagem:hover img {
+    transform: scale(1.03);
+}
+
+/* A moldura da foto corta o zoom para ele não vazar */
+.destaque-imagem {
+    overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   BOTÕES
+   --------------------------------------------------------- */
+
+/* Transição única para os botões: cor, posição e sombra */
+.botao,
+.botao-sacola,
+.newsletter-botao,
+.sacola {
+    transition: background-color var(--transicao), color var(--transicao),
+        border-color var(--transicao), transform var(--transicao), box-shadow var(--transicao);
+}
+
+/* Ao passar o mouse, os botões sobem 2px e ganham sombra */
+.botao:hover,
+.botao:focus-visible,
+.botao-sacola:hover,
+.botao-sacola:focus-visible,
+.newsletter-botao:hover,
+.newsletter-botao:focus-visible,
+.sacola:hover,
+.sacola:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-botao);
+}
+
+/* Ao clicar (:active), o botão "afunda" de volta e a sombra diminui */
+.botao:active,
+.botao-sacola:active,
+.newsletter-botao:active,
+.sacola:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Botão da sacola dentro do card fica terracota no hover */
+.botao-sacola:hover,
+.botao-sacola:focus-visible {
+    border-color: var(--cor-destaque);
+    background-color: var(--cor-destaque);
+    color: var(--cor-superficie);
+}
+
+/* Logo do cabeçalho: a moldura ganha a cor de destaque */
+.logo {
+    transition: border-color var(--transicao), color var(--transicao);
+}
+
+.cabecalho .logo:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+/* Etiquetas dos integrantes no rodapé clareiam a borda */
+.integrante {
+    transition: border-color var(--transicao);
+}
+
+.integrante:hover {
+    border-color: var(--cor-fundo);
+}
+
+
+/* ---------------------------------------------------------
+   MOVIMENTO REDUZIDO
+   Quem configurou o sistema para reduzir animações
+   continua vendo as mudanças de cor, mas sem movimento.
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+
+    .categoria-card:hover,
+    .produto:hover,
+    .produto:focus-within,
+    .depoimento:hover,
+    .contato-item:hover,
+    .vantagem:hover .vantagem-icone,
+    .produto:hover .produto-imagem img,
+    .destaque-imagem:hover img,
+    .botao:hover,
+    .botao-sacola:hover,
+    .newsletter-botao:hover,
+    .sacola:hover {
+        transform: none;
+    }
 }
 
 
