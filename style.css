@@ -1350,3 +1350,277 @@ p {
     font-size: 0.8rem;
     color: var(--cor-texto-suave);
 }
+
+
+/* =========================================================
+   SOBRE A LOJA
+   Título e texto em duas colunas, com uma faixa de números.
+   ========================================================= */
+
+/* FLEX 48 - título na esquerda e texto na direita
+   flex-wrap: em telas estreitas o texto desce para baixo do título */
+.sobre-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--espaco-lg) var(--espaco-xxl);
+}
+
+/* FLEX 49 - rótulo em cima do título
+   flex: 1 1 280px → coluna mais estreita */
+.sobre-titulo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-sm);
+    flex: 1 1 280px;
+}
+
+/* FLEX 50 - parágrafos empilhados
+   flex: 2 1 400px → cresce duas vezes mais que a coluna do título */
+.sobre-texto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-md);
+    flex: 2 1 400px;
+    font-size: 1.05rem;
+}
+
+/* BOX MODEL 26 - faixa de números com linhas em cima e embaixo */
+/* FLEX 51 - quatro números lado a lado, quebrando de linha se precisar */
+.sobre-numeros {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--espaco-lg);
+    width: 100%;
+    padding: var(--espaco-lg) 0;
+    border-top: 1px solid var(--cor-borda);
+    border-bottom: 1px solid var(--cor-borda);
+    margin-top: var(--espaco-xl);
+}
+
+/* FLEX 52 - número grande em cima e legenda embaixo
+   a borda esquerda separa um número do outro */
+.sobre-numero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-xs);
+    flex: 1 1 180px;
+    padding: 0 var(--espaco-lg);
+    border-left: 1px solid var(--cor-borda);
+}
+
+/* O primeiro número não precisa da linha da esquerda */
+.sobre-numero:first-child {
+    padding-left: 0;
+    border-left: none;
+}
+
+.numero-valor {
+    font-family: var(--fonte-titulo);
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--cor-destaque);
+}
+
+.numero-legenda {
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+}
+
+/* Celular: tira as linhas laterais, já que os números ficam em 2 linhas */
+@media (max-width: 600px) {
+    .sobre-numero {
+        flex-basis: calc(50% - var(--espaco-md));
+        padding: 0;
+        border-left: none;
+    }
+}
+
+
+/* =========================================================
+   NEWSLETTER
+   Caixa escura com texto de um lado e formulário do outro.
+   ========================================================= */
+
+/* BOX MODEL 27 - caixa escura da newsletter */
+/* FLEX 53 - texto na esquerda e formulário na direita,
+   alinhados no centro e quebrando de linha em telas menores */
+.newsletter-caixa {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--espaco-lg) var(--espaco-xl);
+    width: 100%;
+    padding: var(--espaco-xl);
+    border: 1px solid var(--cor-texto);
+    /* puxa a caixa um pouco para perto dos depoimentos */
+    margin-top: calc(var(--espaco-lg) * -1);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+
+/* FLEX 54 - rótulo, título e descrição em coluna */
+.newsletter-texto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-sm);
+    flex: 1 1 340px;
+}
+
+/* Rótulo um pouco mais claro sobre o fundo escuro */
+.newsletter-rotulo {
+    color: #e08a66;
+}
+
+.newsletter-titulo {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--cor-fundo);
+}
+
+.newsletter-descricao {
+    color: #b9b2a8;
+}
+
+/* FLEX 55 - campo e botão lado a lado
+   flex: 1 1 360px → o formulário ocupa o espaço que sobra */
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-sm);
+    flex: 1 1 360px;
+    max-width: 500px;
+}
+
+/* BOX MODEL 28 - campo de e-mail
+   flex: 1 1 200px → o campo cresce e o botão fica do tamanho do texto
+   margin: 0 zera a margem que alguns navegadores (Safari) põem em inputs */
+.newsletter-campo {
+    flex: 1 1 200px;
+    height: 52px;
+    padding: 0 var(--espaco-md);
+    border: 1px solid #5a554e;
+    margin: 0;
+    border-radius: var(--raio-sm);
+    background-color: #2b2925;
+    color: var(--cor-fundo);
+}
+
+/* Texto de exemplo dentro do campo */
+.newsletter-campo::placeholder {
+    color: #8f887e;
+}
+
+/* Contorno terracota quando o campo está selecionado */
+.newsletter-campo:focus {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 1px;
+}
+
+/* BOX MODEL 29 - botão da newsletter */
+/* FLEX 56 - centraliza o texto do botão; flex-shrink: 0 impede o texto de quebrar */
+.newsletter-botao {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 52px;
+    padding: 0 var(--espaco-lg);
+    border: 1px solid var(--cor-destaque);
+    margin: 0;
+    border-radius: var(--raio-sm);
+    font-weight: 600;
+    background-color: var(--cor-destaque);
+    color: var(--cor-superficie);
+    transition: background-color var(--transicao);
+}
+
+.newsletter-botao:hover,
+.newsletter-botao:focus-visible {
+    background-color: var(--cor-destaque-escura);
+}
+
+/* Celular: menos espaço interno e botão com a largura toda */
+@media (max-width: 600px) {
+    .newsletter-caixa {
+        padding: var(--espaco-lg);
+    }
+
+    .newsletter-botao {
+        flex-grow: 1;
+    }
+}
+
+
+/* =========================================================
+   CONTATO
+   Quatro cards: endereço, horário, telefones e redes.
+   ========================================================= */
+
+/* FLEX 57 - cards de contato lado a lado, quebrando de linha */
+.contato-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-lg);
+}
+
+/* BOX MODEL 30 - card de contato */
+/* FLEX 58 - título em cima e conteúdo embaixo */
+.contato-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-md);
+    flex: 1 1 240px;
+    min-height: 190px;
+    padding: var(--espaco-lg);
+    border: 1px solid var(--cor-borda);
+    margin-bottom: var(--espaco-sm);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+}
+
+/* Título do card com linha terracota embaixo */
+.contato-titulo {
+    padding-bottom: var(--espaco-sm);
+    border-bottom: 2px solid var(--cor-destaque);
+    font-family: var(--fonte-texto);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    /* a linha fica do tamanho do texto, e não da largura do card */
+    align-self: flex-start;
+}
+
+/* <address> vem em itálico por padrão; aqui fica normal */
+.contato-texto {
+    font-style: normal;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--cor-texto-suave);
+}
+
+/* FLEX 59 - linhas da lista em coluna */
+.contato-linhas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-sm);
+}
+
+/* FLEX 60 - rótulo na esquerda e valor na direita, na mesma linha */
+.contato-linha {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espaco-xs) var(--espaco-md);
+    font-size: 0.9rem;
+    color: var(--cor-texto-suave);
+}
+
+/* O valor (segundo span) fica em negrito e escuro */
+.contato-linha span:last-child {
+    font-weight: 600;
+    color: var(--cor-texto);
+}

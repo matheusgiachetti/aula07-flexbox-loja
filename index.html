@@ -535,6 +535,57 @@
 
         <!-- ===================== SOBRE A LOJA ===================== -->
         <!-- História da Trama Store e como as peças são produzidas -->
+        <section class="secao" id="sobre">
+
+            <!-- Duas colunas: título na esquerda e texto na direita -->
+            <div class="sobre-conteudo">
+
+                <div class="sobre-titulo-grupo">
+                    <span class="secao-rotulo">Sobre a loja</span>
+                    <h2 class="secao-titulo">Uma loja pequena de propósito</h2>
+                </div>
+
+                <div class="sobre-texto">
+                    <p>
+                        A Trama Store começou em 2021 numa sala comercial no centro de
+                        Sorocaba, com três modelos de camiseta e uma máquina de costura
+                        emprestada. A ideia era fazer poucas peças, bem acabadas, que
+                        durassem mais do que uma estação.
+                    </p>
+                    <p>
+                        Hoje cada modelo é costurado por uma oficina parceira do bairro
+                        Além Ponte, em tiragens de no máximo 40 unidades. Quando uma peça
+                        esgota, decidimos com calma se ela volta ou se dá lugar a outra.
+                    </p>
+                    <p>
+                        Trabalhamos só com tecidos naturais, como algodão orgânico, linho
+                        e sarja, e mantemos as cores neutras para que tudo combine entre si.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Faixa com quatro números sobre a loja -->
+            <ul class="sobre-numeros">
+                <li class="sobre-numero">
+                    <strong class="numero-valor">2021</strong>
+                    <span class="numero-legenda">ano em que a loja abriu</span>
+                </li>
+                <li class="sobre-numero">
+                    <strong class="numero-valor">8</strong>
+                    <span class="numero-legenda">peças na coleção atual</span>
+                </li>
+                <li class="sobre-numero">
+                    <strong class="numero-valor">40</strong>
+                    <span class="numero-legenda">unidades por tiragem, no máximo</span>
+                </li>
+                <li class="sobre-numero">
+                    <strong class="numero-valor">1</strong>
+                    <span class="numero-legenda">oficina parceira em Sorocaba</span>
+                </li>
+            </ul>
+
+        </section>
 
         <!-- ===================== DEPOIMENTOS ===================== -->
         <!-- Avaliações de 4 clientes, cada uma em um card -->
@@ -635,7 +686,92 @@
         </section>
 
         <!-- ===================== NEWSLETTER ===================== -->
-        <!-- Cadastro de e-mail para receber novidades -->
+        <!-- Cadastro de e-mail para receber novidades (só visual, não envia nada) -->
+        <section class="secao" id="newsletter">
+
+            <!-- Caixa escura que destaca a newsletter do resto da página -->
+            <div class="newsletter-caixa">
+
+                <div class="newsletter-texto">
+                    <span class="secao-rotulo newsletter-rotulo">Newsletter</span>
+                    <h2 class="newsletter-titulo">Saiba primeiro quando uma peça voltar</h2>
+                    <p class="newsletter-descricao">
+                        Avisamos sobre reposições e novas tiragens. No máximo um e-mail por mês.
+                    </p>
+                </div>
+
+                <!-- Formulário só visual: o botão é type="button", então não envia nada
+                     (não temos servidor nem JavaScript). Se a pessoa apertar Enter no campo,
+                     o action="#newsletter" só recarrega a página nesta mesma seção -->
+                <form class="newsletter-form" action="#newsletter" aria-label="Cadastro na newsletter">
+                    <!-- Rótulo escondido na tela, mas lido por leitores de tela -->
+                    <label for="newsletter-email" class="texto-oculto">Seu e-mail</label>
+                    <input type="email" id="newsletter-email" name="email" class="newsletter-campo" placeholder="seu@email.com" autocomplete="email">
+                    <button type="button" class="newsletter-botao">Quero receber</button>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- ===================== CONTATO ===================== -->
+        <!-- Endereço, horário, telefone e redes sociais -->
+        <section class="secao" id="contato">
+
+            <div class="secao-cabecalho">
+                <div class="secao-titulo-grupo">
+                    <span class="secao-rotulo">Contato</span>
+                    <h2 class="secao-titulo">Venha conhecer a loja</h2>
+                </div>
+                <p class="secao-descricao">
+                    Dá para provar as peças no ateliê ou falar com a gente pelo WhatsApp.
+                </p>
+            </div>
+
+            <!-- Quatro cards de contato lado a lado -->
+            <div class="contato-lista">
+
+                <!-- Card 1: endereço (dados fictícios) -->
+                <div class="contato-item">
+                    <h3 class="contato-titulo">Endereço</h3>
+                    <address class="contato-texto">
+                        Rua das Tecelãs, 120<br>
+                        Centro, Sorocaba - SP<br>
+                        CEP 18010-000
+                    </address>
+                </div>
+
+                <!-- Card 2: horário de funcionamento -->
+                <div class="contato-item">
+                    <h3 class="contato-titulo">Horário</h3>
+                    <ul class="contato-linhas">
+                        <li class="contato-linha"><span>Segunda a sexta</span><span>10h às 19h</span></li>
+                        <li class="contato-linha"><span>Sábado</span><span>10h às 14h</span></li>
+                        <li class="contato-linha"><span>Domingo</span><span>Fechado</span></li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: telefone, WhatsApp e e-mail -->
+                <div class="contato-item">
+                    <h3 class="contato-titulo">Fale com a gente</h3>
+                    <ul class="contato-linhas">
+                        <li class="contato-linha"><span>Telefone</span><span>(15) 3211-4080</span></li>
+                        <li class="contato-linha"><span>WhatsApp</span><span>(15) 99812-3040</span></li>
+                        <li class="contato-linha"><span>E-mail</span><span>oi@tramastore.com.br</span></li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: redes sociais em texto (perfis fictícios) -->
+                <div class="contato-item">
+                    <h3 class="contato-titulo">Redes sociais</h3>
+                    <ul class="contato-linhas">
+                        <li class="contato-linha"><span>Instagram</span><span>@tramastore</span></li>
+                        <li class="contato-linha"><span>TikTok</span><span>@trama.store</span></li>
+                        <li class="contato-linha"><span>Pinterest</span><span>/tramastore</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
