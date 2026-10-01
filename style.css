@@ -138,18 +138,22 @@ h4 {
     color: var(--cor-texto);
 }
 
+/* h1: título principal do banner */
 h1 {
     font-size: 3rem;
 }
 
+/* h2: títulos das seções */
 h2 {
     font-size: 2.25rem;
 }
 
+/* h3: títulos de cards e colunas */
 h3 {
     font-size: 1.25rem;
 }
 
+/* h4: títulos menores, para textos de apoio */
 h4 {
     font-size: 1rem;
 }
@@ -303,9 +307,10 @@ p {
     border-radius: var(--raio-sm);
     font-size: 0.9rem;
     font-weight: 600;
-    transition: border-color var(--transicao);
+    /* a transição fica na seção EFEITOS DE HOVER, junto com os outros botões */
 }
 
+/* No hover a borda da sacola escurece */
 .sacola:hover,
 .sacola:focus-visible {
     border-color: var(--cor-texto);
@@ -422,7 +427,7 @@ p {
     border-radius: var(--raio-sm);
     font-size: 0.95rem;
     font-weight: 600;
-    transition: background-color var(--transicao), color var(--transicao), border-color var(--transicao);
+    /* a transição fica na seção EFEITOS DE HOVER, junto com os outros botões */
 }
 
 /* Botão principal: fundo escuro, texto claro */
@@ -550,14 +555,7 @@ p {
     margin-bottom: var(--espaco-xs);
     border-radius: var(--raio-md);
     background-color: var(--cor-superficie);
-    transition: border-color var(--transicao), transform var(--transicao);
-}
-
-/* No hover o card sobe um pouco e a borda escurece */
-.categoria-card:hover,
-.categoria-card:focus-visible {
-    border-color: var(--cor-texto);
-    transform: translateY(-3px);
+    /* o efeito de hover deste card está na seção EFEITOS DE HOVER */
 }
 
 /* BOX MODEL 12 - quadradinho com o número da categoria */
@@ -648,11 +646,7 @@ p {
     margin-bottom: var(--espaco-sm);
     border-radius: var(--raio-md);
     background-color: var(--cor-superficie);
-    transition: border-color var(--transicao);
-}
-
-.produto:hover {
-    border-color: var(--cor-texto-suave);
+    /* o efeito de hover deste card está na seção EFEITOS DE HOVER */
 }
 
 /* Moldura da foto: proporção 4:5, comum em fotos de roupa.
@@ -674,12 +668,8 @@ p {
     /* texto alternativo discreto caso a imagem não exista */
     font-size: 0.8rem;
     color: var(--cor-texto-suave);
+    /* transição do zoom que acontece no hover do card */
     transition: transform 0.4s ease;
-}
-
-/* Zoom leve na foto ao passar o mouse no card */
-.produto:hover .produto-imagem img {
-    transform: scale(1.03);
 }
 
 /* BOX MODEL 14 - selo sobre a foto ("Mais vendida", "Novo", "-20%")
@@ -835,13 +825,7 @@ p {
     border-radius: var(--raio-sm);
     font-size: 0.85rem;
     font-weight: 600;
-    transition: background-color var(--transicao), color var(--transicao);
-}
-
-.botao-sacola:hover,
-.botao-sacola:focus-visible {
-    background-color: var(--cor-texto);
-    color: var(--cor-fundo);
+    /* o efeito de hover deste botão está na seção EFEITOS DE HOVER */
 }
 
 
@@ -972,12 +956,14 @@ p {
     flex-direction: column;
 }
 
+/* Preço da peça em destaque, grande e em negrito */
 .destaque-preco {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--cor-texto);
 }
 
+/* Parcelamento em texto menor, embaixo do preço */
 .destaque-parcela {
     font-size: 0.85rem;
     color: var(--cor-texto-suave);
@@ -1097,6 +1083,7 @@ p {
     font-weight: 700;
 }
 
+/* Descrição da vantagem em letra menor */
 .vantagem-descricao {
     font-size: 0.875rem;
     line-height: 1.5;
@@ -1157,6 +1144,7 @@ p {
     color: var(--cor-borda);
 }
 
+/* Número da nota ao lado das estrelas */
 .nota-numero {
     font-size: 0.8rem;
     font-weight: 700;
@@ -1229,7 +1217,8 @@ p {
     height: 42px;
     padding: 2px;
     border: 1px solid var(--cor-texto);
-    margin-left: 0;
+    /* soma com o gap de 12px: 16px entre o círculo e o nome */
+    margin-right: var(--espaco-xs);
     border-radius: 50%;
     font-size: 0.8rem;
     font-weight: 700;
@@ -1243,11 +1232,13 @@ p {
     line-height: 1.3;
 }
 
+/* Nome do cliente em negrito */
 .depoimento-nome {
     font-size: 0.9rem;
     font-weight: 700;
 }
 
+/* Cidade do cliente, menor e mais clara */
 .depoimento-cidade {
     font-size: 0.8rem;
     color: var(--cor-texto-suave);
@@ -1317,6 +1308,7 @@ p {
     border-left: none;
 }
 
+/* Número grande em terracota, com a fonte dos títulos */
 .numero-valor {
     font-family: var(--fonte-titulo);
     font-size: 2.5rem;
@@ -1325,6 +1317,7 @@ p {
     color: var(--cor-destaque);
 }
 
+/* Legenda curta embaixo de cada número */
 .numero-legenda {
     font-size: 0.85rem;
     color: var(--cor-texto-suave);
@@ -1368,11 +1361,13 @@ p {
     color: #e08a66;
 }
 
+/* Título claro sobre o fundo escuro */
 .newsletter-titulo {
     font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--cor-fundo);
 }
 
+/* Descrição em cinza claro, para não competir com o título */
 .newsletter-descricao {
     color: #b9b2a8;
 }
@@ -1427,9 +1422,10 @@ p {
     font-weight: 600;
     background-color: var(--cor-destaque);
     color: var(--cor-superficie);
-    transition: background-color var(--transicao);
+    /* a transição fica na seção EFEITOS DE HOVER, junto com os outros botões */
 }
 
+/* No hover o botão fica num terracota mais escuro */
 .newsletter-botao:hover,
 .newsletter-botao:focus-visible {
     background-color: var(--cor-destaque-escura);
@@ -1563,10 +1559,12 @@ p {
     color: var(--cor-fundo);
 }
 
+/* "Store" do logo do rodapé em cinza claro */
 .rodape-logo .logo-complemento {
     color: #b9b2a8;
 }
 
+/* Frase curta sobre a loja, abaixo do logo */
 .rodape-descricao {
     max-width: 36ch;
     font-size: 0.9rem;
@@ -1606,6 +1604,7 @@ p {
     transition: color var(--transicao);
 }
 
+/* No hover o link fica branco e sublinhado */
 .rodape-link:hover,
 .rodape-link:focus-visible {
     color: var(--cor-superficie);
@@ -1634,6 +1633,7 @@ p {
     row-gap: 12px;
 }
 
+/* Texto com a aula, a faculdade e o professor */
 .creditos-texto {
     font-size: 0.85rem;
     color: #b9b2a8;
@@ -1696,9 +1696,10 @@ p {
     transition: border-color var(--transicao), transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Card de categoria: sobe e ganha sombra */
+/* Card de categoria: sobe, ganha sombra e a borda escurece */
 .categoria-card:hover,
 .categoria-card:focus-visible {
+    border-color: var(--cor-texto);
     transform: translateY(-4px);
     box-shadow: var(--sombra-card);
 }
@@ -1721,6 +1722,7 @@ p {
     transition: transform 0.25s ease;
 }
 
+/* No hover do card, o selo desliza 2px para a direita */
 .produto:hover .produto-selo {
     transform: translateX(2px);
 }
@@ -1731,6 +1733,7 @@ p {
     transition: border-color var(--transicao), background-color var(--transicao);
 }
 
+/* Hover só nos tamanhos disponíveis */
 .tamanho:not(.tamanho-esgotado):hover {
     border-color: var(--cor-texto);
     background-color: var(--cor-fundo);
@@ -1757,6 +1760,7 @@ p {
     transition: transform 0.6s ease;
 }
 
+/* No hover da moldura, a foto aproxima 3% */
 .destaque-imagem:hover img {
     transform: scale(1.03);
 }
@@ -1815,6 +1819,7 @@ p {
     transition: border-color var(--transicao), color var(--transicao);
 }
 
+/* No hover, a moldura e o texto do logo ficam terracota */
 .cabecalho .logo:hover {
     border-color: var(--cor-destaque);
     color: var(--cor-destaque);
@@ -1825,6 +1830,7 @@ p {
     transition: border-color var(--transicao);
 }
 
+/* No hover a borda da etiqueta clareia */
 .integrante:hover {
     border-color: var(--cor-fundo);
 }
@@ -1836,12 +1842,14 @@ p {
    continua vendo as mudanças de cor, mas sem movimento.
    --------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+    /* transições quase instantâneas em todos os elementos */
     *,
     *::before,
     *::after {
         transition-duration: 0.01ms !important;
     }
 
+    /* e nenhum elemento se move no hover */
     .categoria-card:hover,
     .produto:hover,
     .produto:focus-within,
@@ -1897,6 +1905,7 @@ p {
         row-gap: var(--espaco-sm);
     }
 
+    /* o menu ocupa a linha de baixo inteira */
     .menu {
         order: 3;
         width: 100%;
@@ -1904,10 +1913,12 @@ p {
         overflow-x: auto;
     }
 
+    /* espaço menor entre os links */
     .menu-lista {
         gap: var(--espaco-md);
     }
 
+    /* os links não quebram no meio do texto */
     .menu-link {
         white-space: nowrap;
     }
@@ -1995,6 +2006,7 @@ p {
         padding: var(--espaco-xl) var(--espaco-md);
     }
 
+    /* recuo menor do texto em relação à linha terracota */
     .hero-conteudo {
         padding-left: var(--espaco-lg);
     }
@@ -2016,6 +2028,7 @@ p {
         margin-bottom: var(--espaco-xl);
     }
 
+    /* menos espaço entre o cabeçalho da seção e o conteúdo */
     .secao-cabecalho {
         margin-bottom: var(--espaco-lg);
     }
@@ -2025,6 +2038,7 @@ p {
         flex-basis: calc(50% - var(--espaco-md));
     }
 
+    /* cards de categoria mais baixos e com menos espaço interno */
     .categoria-card {
         min-height: 200px;
         padding: var(--espaco-md);
@@ -2058,6 +2072,7 @@ p {
         padding: var(--espaco-lg);
     }
 
+    /* o botão cresce e ocupa a linha toda quando quebra */
     .newsletter-botao {
         flex-grow: 1;
     }
@@ -2074,6 +2089,7 @@ p {
         row-gap: var(--espaco-lg);
     }
 
+    /* marca e colunas usam a altura do próprio conteúdo */
     .rodape-marca,
     .rodape-coluna {
         flex: none;
