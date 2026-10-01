@@ -156,6 +156,52 @@ p {
 
 
 /* =========================================================
+   BARRA DE AVISO
+   Faixa fina acima do cabeçalho com frete e trocas.
+   ========================================================= */
+
+/* BOX MODEL 17 - faixa de aviso
+   A borda inferior terracota funciona como um fio de acabamento.
+   margin: 0 é proposital: a faixa encosta no topo da página
+   e no cabeçalho, sem nenhuma sobra de fundo entre eles */
+/* FLEX 27 - centraliza os avisos nos dois eixos e põe espaço entre eles */
+.barra-aviso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espaco-sm);
+    width: 100%;
+    height: 36px;
+    padding: 0 var(--espaco-md);
+    border-bottom: 2px solid var(--cor-destaque);
+    margin: 0;
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+/* Cada aviso não quebra no meio da frase */
+.barra-aviso-item {
+    white-space: nowrap;
+}
+
+/* Ponto separador um pouco mais apagado */
+.barra-aviso-separador {
+    opacity: 0.6;
+}
+
+/* Celular: letra um pouco menor para os dois avisos caberem em uma linha */
+@media (max-width: 420px) {
+    .barra-aviso {
+        font-size: 0.7rem;
+        letter-spacing: 0;
+    }
+}
+
+
+/* =========================================================
    CABEÇALHO
    Barra fixa no topo com logo, menu e sacola.
    ========================================================= */
