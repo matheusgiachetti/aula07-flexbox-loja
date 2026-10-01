@@ -1199,3 +1199,154 @@ p {
         padding: var(--espaco-lg) var(--espaco-md);
     }
 }
+
+
+/* =========================================================
+   DEPOIMENTOS
+   Quatro cards de clientes com nota, texto e autor.
+   ========================================================= */
+
+/* FLEX 41 - lista de depoimentos
+   align-items: stretch (padrão) deixa todos os cards de uma
+   linha com a mesma altura, mesmo com textos de tamanhos diferentes */
+.depoimentos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--espaco-lg);
+}
+
+/* BOX MODEL 23 - card de depoimento */
+/* FLEX 42 - nota, texto, produto e autor empilhados em coluna
+   flex: 1 1 240px → 4 por linha no computador, 2 no tablet, 1 no celular */
+.depoimento {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-md);
+    flex: 1 1 240px;
+    min-height: 320px;
+    padding: var(--espaco-lg);
+    border: 1px solid var(--cor-borda);
+    /* soma com o gap quando os cards quebram de linha */
+    margin-bottom: var(--espaco-sm);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+}
+
+/* FLEX 43 - estrelas e número da nota lado a lado
+   inline-flex: o bloco fica do tamanho do conteúdo
+   align-self: flex-start impede que ele estique na largura do card */
+.depoimento-nota {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: var(--espaco-sm);
+}
+
+/* Estrelas em terracota, com espaçamento entre elas */
+.estrelas {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+}
+
+/* Estrela não preenchida fica bem clara */
+.estrela-vazia {
+    color: var(--cor-borda);
+}
+
+.nota-numero {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Texto do depoimento com aspas grandes decorativas antes */
+.depoimento-texto {
+    position: relative;
+    padding-top: var(--espaco-md);
+}
+
+/* Aspas criadas pelo CSS (::before), sem precisar de imagem */
+.depoimento-texto::before {
+    content: "\201C";
+    position: absolute;
+    top: -14px;
+    left: -4px;
+    font-family: var(--fonte-titulo);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--cor-fundo-alt);
+}
+
+/* O parágrafo fica acima das aspas */
+.depoimento-texto p {
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--cor-texto);
+}
+
+/* BOX MODEL 24 - etiqueta com o produto que o cliente comprou */
+/* FLEX 44 - inline-flex + align-self: flex-start
+   a etiqueta fica do tamanho do texto em vez de ocupar a largura do card */
+.depoimento-produto {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid var(--cor-borda);
+    margin-bottom: var(--espaco-xs);
+    border-radius: var(--raio-sm);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--cor-texto-suave);
+    background-color: var(--cor-fundo);
+}
+
+/* FLEX 45 - avatar e dados do cliente na mesma linha
+   margin-top: auto empurra o autor para o fim do card,
+   então todos os autores ficam alinhados na mesma altura */
+.depoimento-autor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: var(--espaco-md);
+    border-top: 1px solid var(--cor-borda);
+}
+
+/* BOX MODEL 25 - círculo com as iniciais do cliente */
+/* FLEX 46 - centraliza as iniciais; flex-shrink: 0 mantém o círculo redondo */
+.depoimento-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    padding: 2px;
+    border: 1px solid var(--cor-texto);
+    margin-left: 0;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* FLEX 47 - nome em cima e cidade embaixo */
+.depoimento-dados {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.depoimento-nome {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.depoimento-cidade {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+}
