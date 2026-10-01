@@ -192,14 +192,6 @@ p {
     opacity: 0.6;
 }
 
-/* Celular: letra um pouco menor para os dois avisos caberem em uma linha */
-@media (max-width: 420px) {
-    .barra-aviso {
-        font-size: 0.7rem;
-        letter-spacing: 0;
-    }
-}
-
 
 /* =========================================================
    CABEÇALHO
@@ -331,33 +323,6 @@ p {
     color: var(--cor-fundo);
 }
 
-/* Telas menores: o menu desce para uma segunda linha e pode rolar
-   para os lados, já que não usamos JavaScript para abrir/fechar */
-@media (max-width: 860px) {
-    .cabecalho-conteudo {
-        /* permite que o menu quebre para a linha de baixo */
-        flex-wrap: wrap;
-        height: auto;
-        padding: var(--espaco-md);
-        row-gap: var(--espaco-sm);
-    }
-
-    .menu {
-        /* order joga o menu para depois da sacola */
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .menu-lista {
-        gap: var(--espaco-md);
-    }
-
-    .menu-link {
-        white-space: nowrap;
-    }
-}
-
 
 /* =========================================================
    BANNER PRINCIPAL (HERO)
@@ -479,23 +444,6 @@ p {
 .botao-secundario:focus-visible {
     background-color: var(--cor-texto);
     color: var(--cor-fundo);
-}
-
-/* Telas menores: banner mais baixo e menos recuo lateral */
-@media (max-width: 600px) {
-    .hero {
-        min-height: auto;
-        padding: var(--espaco-xl) var(--espaco-md);
-    }
-
-    .hero-conteudo {
-        padding-left: var(--espaco-lg);
-    }
-
-    /* botões ocupam a largura toda, um embaixo do outro */
-    .botao {
-        width: 100%;
-    }
 }
 
 
@@ -655,18 +603,6 @@ p {
 /* "Ver" em terracota */
 .categoria-seta {
     color: var(--cor-destaque);
-}
-
-/* Celular: dois cards por linha; o quinto ocupa a linha toda */
-@media (max-width: 600px) {
-    .categoria-item {
-        flex-basis: calc(50% - var(--espaco-md));
-    }
-
-    .categoria-card {
-        min-height: 200px;
-        padding: var(--espaco-md);
-    }
 }
 
 
@@ -903,20 +839,6 @@ p {
     color: var(--cor-fundo);
 }
 
-/* Tablet: 2 cards por linha (50% menos metade do gap) */
-@media (max-width: 1024px) {
-    .produto {
-        flex-basis: calc(50% - 12px);
-    }
-}
-
-/* Celular: 1 card por linha, ocupando a largura toda */
-@media (max-width: 520px) {
-    .produto {
-        flex-basis: 100%;
-    }
-}
-
 
 /* =========================================================
    DESTAQUE DA COLEÇÃO
@@ -1097,23 +1019,6 @@ p {
     background-color: var(--cor-superficie);
 }
 
-/* Tablet e celular: uma coluna só */
-@media (max-width: 860px) {
-    .destaque {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    /* order: -1 coloca a foto ANTES do texto na coluna,
-       mesmo ela vindo depois no HTML */
-    .destaque-imagem {
-        order: -1;
-        flex-basis: auto;
-        height: 460px;
-        margin: 0 0 var(--espaco-xl);
-    }
-}
-
 
 /* =========================================================
    VANTAGENS
@@ -1190,14 +1095,6 @@ p {
 .vantagem-descricao {
     font-size: 0.875rem;
     line-height: 1.5;
-}
-
-/* Celular: menos espaço interno e entre os itens */
-@media (max-width: 600px) {
-    .vantagens-lista {
-        gap: var(--espaco-lg);
-        padding: var(--espaco-lg) var(--espaco-md);
-    }
 }
 
 
@@ -1428,15 +1325,6 @@ p {
     color: var(--cor-texto-suave);
 }
 
-/* Celular: tira as linhas laterais, já que os números ficam em 2 linhas */
-@media (max-width: 600px) {
-    .sobre-numero {
-        flex-basis: calc(50% - var(--espaco-md));
-        padding: 0;
-        border-left: none;
-    }
-}
-
 
 /* =========================================================
    NEWSLETTER
@@ -1540,17 +1428,6 @@ p {
 .newsletter-botao:hover,
 .newsletter-botao:focus-visible {
     background-color: var(--cor-destaque-escura);
-}
-
-/* Celular: menos espaço interno e botão com a largura toda */
-@media (max-width: 600px) {
-    .newsletter-caixa {
-        padding: var(--espaco-lg);
-    }
-
-    .newsletter-botao {
-        flex-grow: 1;
-    }
 }
 
 
@@ -1789,18 +1666,230 @@ p {
     color: #8f887e;
 }
 
-/* Celular: menos espaço interno no rodapé */
+
+/* =========================================================
+   RESPONSIVIDADE
+   Todas as media queries ficam aqui no fim do arquivo, para
+   sobrescrever as regras de cima. Usamos max-width: cada
+   bloco vale para telas com ATÉ aquela largura.
+   - até 1024px: notebooks pequenos (só ajusta a vitrine)
+   - até 900px: tablets
+   - até 600px: celulares
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   ATÉ 1024px - NOTEBOOK PEQUENO
+   --------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+    /* Vitrine: 2 cards por linha (50% menos metade do gap).
+       Com 4 por linha os cards ficariam estreitos demais */
+    .produto {
+        flex-basis: calc(50% - 12px);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ATÉ 900px - TABLET
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+
+    /* Cabeçalho: logo e sacola na primeira linha e o menu na segunda.
+       flex-wrap deixa o menu quebrar; order joga ele para o fim */
+    .cabecalho-conteudo {
+        flex-wrap: wrap;
+        height: auto;
+        padding: var(--espaco-md);
+        row-gap: var(--espaco-sm);
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        /* se os links não couberem, a linha rola para o lado */
+        overflow-x: auto;
+    }
+
+    .menu-lista {
+        gap: var(--espaco-md);
+    }
+
+    .menu-link {
+        white-space: nowrap;
+    }
+
+    /* Banner mais baixo */
+    .hero {
+        min-height: 460px;
+        padding: var(--espaco-xl) var(--espaco-lg);
+    }
+
+    /* Seções um pouco mais próximas umas das outras */
+    .secao {
+        margin-bottom: 64px;
+    }
+
+    /* Destaque: sai da linha invertida e vira uma coluna */
+    .destaque {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Em coluna, flex-basis passaria a valer como ALTURA;
+       flex: none faz o bloco usar a altura do próprio conteúdo */
+    .destaque-texto {
+        flex: none;
+    }
+
+    /* order: -1 coloca a foto ANTES do texto na coluna,
+       mesmo ela vindo depois no HTML */
+    .destaque-imagem {
+        order: -1;
+        flex: none;
+        height: 480px;
+        margin: 0 0 var(--espaco-xl);
+    }
+
+    /* Rodapé: a marca ocupa a primeira linha inteira
+       e as três colunas de links ficam embaixo */
+    .rodape-marca {
+        flex-basis: 100%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ATÉ 600px - CELULAR
+   --------------------------------------------------------- */
 @media (max-width: 600px) {
+
+    /* Barra de aviso: letra menor para caber em uma linha */
+    .barra-aviso {
+        font-size: 0.7rem;
+        letter-spacing: 0;
+    }
+
+    /* Cabeçalho deixa de ser fixo: com o menu em coluna ele fica
+       mais alto e ocuparia muito da tela se acompanhasse a rolagem */
+    .cabecalho {
+        position: static;
+    }
+
+    /* Menu em COLUNA. Com flex-wrap e altura fixa, os links que não
+       cabem na primeira coluna passam para uma segunda coluna ao lado
+       (3 links em cada), em vez de formar uma lista muito comprida */
+    .menu {
+        overflow-x: visible;
+    }
+
+    .menu-lista {
+        flex-direction: column;
+        flex-wrap: wrap;
+        /* em coluna, align-items atua na horizontal: links à esquerda */
+        align-items: flex-start;
+        align-content: flex-start;
+        height: 132px;
+        row-gap: 4px;
+        column-gap: var(--espaco-xxl);
+    }
+
+    /* Banner em coluna, com os filhos esticados na largura toda */
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        padding: var(--espaco-xl) var(--espaco-md);
+    }
+
+    .hero-conteudo {
+        padding-left: var(--espaco-lg);
+    }
+
+    /* Botões do banner um embaixo do outro */
+    .hero-botoes {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Botões ocupam a largura toda */
+    .botao {
+        width: 100%;
+    }
+
+    /* Seções mais próximas e com menos recuo lateral */
+    .secao {
+        padding: 0 var(--espaco-md);
+        margin-bottom: var(--espaco-xl);
+    }
+
+    .secao-cabecalho {
+        margin-bottom: var(--espaco-lg);
+    }
+
+    /* Categorias: dois cards por linha; o quinto ocupa a linha toda */
+    .categoria-item {
+        flex-basis: calc(50% - var(--espaco-md));
+    }
+
+    .categoria-card {
+        min-height: 200px;
+        padding: var(--espaco-md);
+    }
+
+    /* Vitrine: 1 card por linha, ocupando a largura toda */
+    .produto {
+        flex-basis: 100%;
+    }
+
+    /* Destaque: foto mais baixa */
+    .destaque-imagem {
+        height: 400px;
+    }
+
+    /* Vantagens: menos espaço interno e entre os itens */
+    .vantagens-lista {
+        gap: var(--espaco-lg);
+        padding: var(--espaco-lg) var(--espaco-md);
+    }
+
+    /* Sobre: números em 2 por linha, sem as linhas laterais */
+    .sobre-numero {
+        flex-basis: calc(50% - var(--espaco-md));
+        padding: 0;
+        border-left: none;
+    }
+
+    /* Newsletter: menos espaço interno e botão com a largura toda */
+    .newsletter-caixa {
+        padding: var(--espaco-lg);
+    }
+
+    .newsletter-botao {
+        flex-grow: 1;
+    }
+
+    /* Rodapé com menos espaço interno */
     .rodape {
         padding: var(--espaco-xl) var(--espaco-md);
     }
 
+    /* Rodapé em COLUNA: marca e colunas de links empilhadas.
+       flex: none evita que o flex-basis vire altura na coluna */
     .rodape-colunas {
-        column-gap: var(--espaco-lg);
+        flex-flow: column nowrap;
+        row-gap: var(--espaco-lg);
     }
 
-    /* as colunas de links ficam duas por linha */
+    .rodape-marca,
     .rodape-coluna {
-        flex-basis: calc(50% - var(--espaco-lg));
+        flex: none;
+    }
+
+    /* Créditos em coluna, alinhados à esquerda */
+    .rodape-creditos {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
