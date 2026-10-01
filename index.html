@@ -392,7 +392,67 @@
         </section>
 
         <!-- ===================== DESTAQUE DA COLEÇÃO ===================== -->
-        <!-- Bloco com uma peça em destaque e seus detalhes -->
+        <!-- Bloco com uma peça em destaque e seus detalhes.
+             No HTML o texto vem primeiro (ordem de leitura para leitores de tela),
+             mas o CSS usa row-reverse para mostrar a foto à esquerda -->
+        <section class="secao destaque" id="destaque">
+
+            <!-- Lado do texto -->
+            <div class="destaque-texto">
+
+                <!-- Etiquetas pequenas acima do título -->
+                <div class="destaque-etiquetas">
+                    <span class="etiqueta etiqueta-destaque">Destaque da coleção</span>
+                    <span class="etiqueta">Novo</span>
+                </div>
+
+                <h2 class="destaque-titulo">Vestido Midi de Linho</h2>
+
+                <p class="destaque-descricao">
+                    Cortado em linho lavado, que já chega macio e não amassa tanto
+                    quanto o linho cru. Tem mangas longas com punho franzido, decote
+                    reto e saia ampla que acompanha o movimento. Vai bem com tênis
+                    durante o dia e com sandália à noite.
+                </p>
+
+                <!-- Ficha técnica da peça: cada linha tem rótulo e valor -->
+                <ul class="destaque-ficha">
+                    <li class="ficha-item">
+                        <span class="ficha-rotulo">Tecido</span>
+                        <span class="ficha-valor">100% linho lavado</span>
+                    </li>
+                    <li class="ficha-item">
+                        <span class="ficha-rotulo">Cor</span>
+                        <span class="ficha-valor">Terracota</span>
+                    </li>
+                    <li class="ficha-item">
+                        <span class="ficha-rotulo">Tamanhos</span>
+                        <span class="ficha-valor">P, M e G</span>
+                    </li>
+                    <li class="ficha-item">
+                        <span class="ficha-rotulo">Cuidados</span>
+                        <span class="ficha-valor">Lavar à mão ou no ciclo delicado</span>
+                    </li>
+                </ul>
+
+                <!-- Preço e botão na mesma linha -->
+                <div class="destaque-compra">
+                    <div class="destaque-preco-grupo">
+                        <span class="destaque-preco">R$ 279,90</span>
+                        <span class="destaque-parcela">ou 3x de R$ 93,30</span>
+                    </div>
+                    <a href="#produtos" class="botao botao-principal">Ver na vitrine</a>
+                </div>
+
+            </div>
+
+            <!-- Lado da imagem, com legenda sobre a foto -->
+            <figure class="destaque-imagem">
+                <img src="imagens/vestido-midi-linho.jpg" alt="Modelo usando o vestido midi de linho cor terracota com mangas longas" width="800" height="1200" loading="lazy">
+                <figcaption class="destaque-legenda">Produção limitada: 40 unidades</figcaption>
+            </figure>
+
+        </section>
 
         <!-- ===================== VANTAGENS ===================== -->
         <!-- Frete, trocas, pagamento e tecidos -->

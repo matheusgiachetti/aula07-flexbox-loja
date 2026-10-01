@@ -916,3 +916,200 @@ p {
         flex-basis: 100%;
     }
 }
+
+
+/* =========================================================
+   DESTAQUE DA COLEÇÃO
+   Foto de um lado e texto do outro.
+   ========================================================= */
+
+/* FLEX 28 - seção de destaque em linha INVERTIDA
+   flex-direction: row-reverse: no HTML o texto vem antes da foto,
+   mas na tela a ordem se inverte e a foto aparece à esquerda */
+.destaque {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+/* FLEX 29 - coluna de texto
+   flex: 1 1 0 → cresce para ocupar todo o espaço que a foto não usa */
+.destaque-texto {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    gap: var(--espaco-lg);
+}
+
+/* FLEX 30 - etiquetas lado a lado, quebrando de linha se precisar */
+.destaque-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-sm);
+}
+
+/* FLEX 31 - etiqueta pequena com inline-flex
+   inline-flex: a etiqueta se comporta como texto (fica do tamanho
+   do conteúdo), mas por dentro alinha o texto com Flexbox */
+.etiqueta {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 var(--espaco-md);
+    border: 1px solid var(--cor-borda);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cor-texto-suave);
+}
+
+/* Variação da etiqueta em terracota */
+.etiqueta-destaque {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+/* Título grande da peça em destaque */
+.destaque-titulo {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* Descrição com largura confortável de leitura */
+.destaque-descricao {
+    max-width: 54ch;
+}
+
+/* BOX MODEL 18 - caixa da ficha técnica
+   width + padding + border + margin para separar do resto do texto */
+.destaque-ficha {
+    width: 100%;
+    max-width: 480px;
+    padding: var(--espaco-sm) var(--espaco-lg);
+    border: 1px solid var(--cor-borda);
+    margin: var(--espaco-sm) 0;
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+}
+
+/* FLEX 32 - cada linha da ficha: rótulo na esquerda, valor na direita */
+.ficha-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--espaco-md);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--cor-borda);
+    font-size: 0.9rem;
+}
+
+/* A última linha não precisa de linha embaixo */
+.ficha-item:last-child {
+    border-bottom: none;
+}
+
+/* FLEX 33 - rótulo com flex-shrink: 0
+   flex-shrink: 0 impede o rótulo de encolher quando o valor é
+   longo; quem quebra de linha é o valor, não o rótulo */
+.ficha-rotulo {
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+/* Valor alinhado à direita */
+.ficha-valor {
+    text-align: right;
+    color: var(--cor-texto-suave);
+}
+
+/* FLEX 34 - preço na esquerda e botão na direita */
+.destaque-compra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--espaco-md);
+    max-width: 480px;
+}
+
+/* O botão aqui não precisa da margem de cima que ele tem no banner */
+.destaque-compra .botao {
+    margin-top: 0;
+}
+
+/* FLEX 35 - preço em cima e parcela embaixo */
+.destaque-preco-grupo {
+    display: flex;
+    flex-direction: column;
+}
+
+.destaque-preco {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.destaque-parcela {
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+}
+
+/* BOX MODEL 19 - moldura da foto
+   margin-right afasta a foto do texto: como a linha está invertida,
+   a foto fica à esquerda e a margem direita é o espaço entre os dois.
+   flex-shrink: 1 deixa a foto encolher antes de apertar o texto */
+.destaque-imagem {
+    position: relative;
+    flex: 0 1 46%;
+    height: 600px;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    margin-right: var(--espaco-xxl);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+}
+
+/* Foto preenche a moldura sem distorcer */
+.destaque-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--raio-sm);
+}
+
+/* BOX MODEL 20 - legenda sobre a foto, no canto inferior esquerdo */
+/* FLEX 36 - inline-flex para alinhar o texto da legenda */
+.destaque-legenda {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 var(--espaco-md);
+    border: 1px solid var(--cor-borda);
+    margin: var(--espaco-lg);
+    border-radius: var(--raio-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--cor-superficie);
+}
+
+/* Tablet e celular: uma coluna só */
+@media (max-width: 860px) {
+    .destaque {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* order: -1 coloca a foto ANTES do texto na coluna,
+       mesmo ela vindo depois no HTML */
+    .destaque-imagem {
+        order: -1;
+        flex-basis: auto;
+        height: 460px;
+        margin: 0 0 var(--espaco-xl);
+    }
+}
