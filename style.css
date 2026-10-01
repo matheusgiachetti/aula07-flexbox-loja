@@ -1624,3 +1624,183 @@ p {
     font-weight: 600;
     color: var(--cor-texto);
 }
+
+
+/* =========================================================
+   RODAPÉ
+   Fundo escuro com colunas de links, créditos e integrantes.
+   Aqui usamos flex-flow (atalho de flex-direction + flex-wrap)
+   e column-gap / row-gap para controlar os dois espaçamentos
+   separadamente.
+   ========================================================= */
+
+/* BOX MODEL 31 - rodapé inteiro
+   A borda superior terracota repete o fio da barra de aviso do topo */
+.rodape {
+    width: 100%;
+    padding: var(--espaco-xxl) var(--espaco-lg) var(--espaco-xl);
+    border-top: 4px solid var(--cor-destaque);
+    margin-top: var(--espaco-xl);
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+
+/* Container com a mesma largura máxima do resto do site */
+.rodape-conteudo {
+    /* desconta o padding lateral das seções para alinhar com o conteúdo delas */
+    max-width: calc(var(--largura-max) - 2 * var(--espaco-lg));
+    margin: 0 auto;
+}
+
+/* FLEX 61 - colunas do rodapé
+   flex-flow: row wrap → em linha, quebrando quando não couber
+   column-gap: espaço ENTRE colunas (horizontal)
+   row-gap: espaço entre LINHAS quando as colunas quebram (vertical) */
+.rodape-colunas {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: var(--espaco-xxl);
+    row-gap: var(--espaco-xl);
+    padding-bottom: var(--espaco-xl);
+    border-bottom: 1px solid #3a3732;
+}
+
+/* FLEX 62 - coluna da marca: logo em cima e texto embaixo
+   flex: 2 1 280px → cresce o dobro das colunas de links */
+.rodape-marca {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    row-gap: var(--espaco-md);
+    flex: 2 1 280px;
+}
+
+/* Logo reaproveitado do cabeçalho, com cores invertidas */
+.rodape-logo {
+    border-color: var(--cor-fundo);
+    color: var(--cor-fundo);
+}
+
+.rodape-logo .logo-complemento {
+    color: #b9b2a8;
+}
+
+.rodape-descricao {
+    max-width: 36ch;
+    font-size: 0.9rem;
+    color: #b9b2a8;
+}
+
+/* FLEX 63 - cada coluna de links: título em cima e lista embaixo
+   flex: 1 1 160px → as três colunas dividem o espaço por igual */
+.rodape-coluna {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: var(--espaco-md);
+    flex: 1 1 160px;
+}
+
+/* Título da coluna em caixa alta */
+.rodape-titulo {
+    font-family: var(--fonte-texto);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e08a66;
+}
+
+/* FLEX 64 - links empilhados com row-gap entre eles */
+.rodape-links {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 10px;
+}
+
+/* Links claros que ficam brancos no hover */
+.rodape-link {
+    font-size: 0.9rem;
+    color: #cfc8bd;
+    transition: color var(--transicao);
+}
+
+.rodape-link:hover,
+.rodape-link:focus-visible {
+    color: var(--cor-superficie);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* FLEX 65 - faixa de créditos
+   flex-flow: row wrap + justify-content: space-between
+   → créditos na esquerda e aviso na direita; em telas pequenas
+   o aviso desce, e o row-gap controla o espaço entre as linhas */
+.rodape-creditos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    column-gap: var(--espaco-xl);
+    row-gap: var(--espaco-lg);
+    padding-top: var(--espaco-xl);
+}
+
+/* FLEX 66 - texto do trabalho em cima e integrantes embaixo */
+.creditos-trabalho {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 12px;
+}
+
+.creditos-texto {
+    font-size: 0.85rem;
+    color: #b9b2a8;
+}
+
+/* FLEX 67 - nomes dos integrantes lado a lado
+   column-gap e row-gap diferentes: mais espaço na horizontal
+   do que entre as linhas quando os nomes quebram */
+.integrantes-lista {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: var(--espaco-sm);
+    row-gap: var(--espaco-sm);
+}
+
+/* BOX MODEL 32 - etiqueta com o nome de cada integrante */
+/* FLEX 68 - inline-flex centraliza o nome dentro da etiqueta */
+.integrante {
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid #4a4640;
+    margin: 0;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cor-fundo);
+}
+
+/* Aviso de loja fictícia, bem discreto */
+.rodape-aviso {
+    max-width: 40ch;
+    font-size: 0.8rem;
+    color: #8f887e;
+}
+
+/* Celular: menos espaço interno no rodapé */
+@media (max-width: 600px) {
+    .rodape {
+        padding: var(--espaco-xl) var(--espaco-md);
+    }
+
+    .rodape-colunas {
+        column-gap: var(--espaco-lg);
+    }
+
+    /* as colunas de links ficam duas por linha */
+    .rodape-coluna {
+        flex-basis: calc(50% - var(--espaco-lg));
+    }
+}
