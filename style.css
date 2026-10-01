@@ -1113,3 +1113,89 @@ p {
         margin: 0 0 var(--espaco-xl);
     }
 }
+
+
+/* =========================================================
+   VANTAGENS
+   Faixa com frete, troca, parcelamento e segurança.
+   ========================================================= */
+
+/* Esconde o texto na tela, mas mantém para leitores de tela */
+.texto-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* BOX MODEL 21 - caixa que envolve as quatro vantagens */
+/* FLEX 37 - vantagens lado a lado, quebrando de linha em telas menores */
+.vantagens-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-xl) var(--espaco-lg);
+    width: 100%;
+    padding: var(--espaco-xl) var(--espaco-lg);
+    border: 1px solid var(--cor-borda);
+    /* margin negativa no topo aproxima a faixa da seção de destaque */
+    margin-top: calc(var(--espaco-lg) * -1);
+    border-radius: var(--raio-md);
+    background-color: var(--cor-superficie);
+}
+
+/* FLEX 38 - cada vantagem: ícone na esquerda e texto na direita
+   flex: 1 1 220px → parte de 220px e cresce para dividir a linha */
+.vantagem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espaco-md);
+    flex: 1 1 220px;
+}
+
+/* BOX MODEL 22 - quadrado do ícone */
+/* FLEX 39 - inline-flex centraliza o desenho dentro do quadrado
+   flex-shrink: 0 garante que o ícone nunca seja espremido pelo texto */
+.vantagem-icone {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    /* desce 2px para alinhar com a primeira linha do título */
+    margin-top: 2px;
+    border-radius: 50%;
+    color: var(--cor-destaque);
+    background-color: var(--cor-fundo);
+}
+
+/* FLEX 40 - título em cima e descrição embaixo */
+.vantagem-texto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-xs);
+}
+
+/* Título usa a fonte do texto, em negrito */
+.vantagem-titulo {
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.vantagem-descricao {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Celular: menos espaço interno e entre os itens */
+@media (max-width: 600px) {
+    .vantagens-lista {
+        gap: var(--espaco-lg);
+        padding: var(--espaco-lg) var(--espaco-md);
+    }
+}
