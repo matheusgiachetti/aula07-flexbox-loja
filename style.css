@@ -522,7 +522,10 @@ p {
 /* FLEX 14 - lista de categorias com quebra de linha
    flex-wrap: os cards que não cabem descem para a próxima linha
    align-content: controla como as LINHAS se distribuem no eixo
-   vertical quando há mais de uma (aqui ficam juntas no topo) */
+   vertical quando há mais de uma. Só faz diferença se a lista tiver
+   altura sobrando; aqui a altura é automática, então ele garante que,
+   se um dia ela ganhar altura fixa, as linhas continuem juntas no topo.
+   O uso de align-content com efeito visível está no FLEX 71 (menu no celular) */
 .categorias-lista {
     display: flex;
     flex-wrap: wrap;
@@ -617,8 +620,9 @@ p {
 
 /* FLEX 19 - grade da vitrine
    flex-wrap: wrap deixa os cards descerem de linha
-   align-content: flex-start mantém as linhas juntas no topo,
-   sem espalhar espaço extra entre elas */
+   align-content: flex-start mantém as linhas juntas no topo caso a
+   grade tenha altura sobrando (com altura automática, como aqui,
+   não muda nada na tela; veja o FLEX 71 para o efeito visível) */
 .vitrine-grade {
     display: flex;
     flex-wrap: wrap;
@@ -1905,7 +1909,10 @@ p {
         row-gap: var(--espaco-sm);
     }
 
-    /* o menu ocupa a linha de baixo inteira */
+    /* FLEX 69 - order: 3
+       no HTML o menu vem entre o logo e a sacola; order: 3 manda ele
+       para depois da sacola, então ele quebra para a linha de baixo
+       e ocupa a largura inteira */
     .menu {
         order: 3;
         width: 100%;
@@ -1946,8 +1953,9 @@ p {
         flex: none;
     }
 
-    /* order: -1 coloca a foto ANTES do texto na coluna,
-       mesmo ela vindo depois no HTML */
+    /* FLEX 70 - order: -1
+       coloca a foto ANTES do texto na coluna, mesmo ela vindo
+       depois no HTML (o padrão de todos os itens é order: 0) */
     .destaque-imagem {
         order: -1;
         flex: none;
@@ -1980,13 +1988,17 @@ p {
         position: static;
     }
 
-    /* Menu em COLUNA. Com flex-wrap e altura fixa, os links que não
-       cabem na primeira coluna passam para uma segunda coluna ao lado
-       (3 links em cada), em vez de formar uma lista muito comprida */
+    /* Sem rolagem lateral: no celular os links ficam em coluna */
     .menu {
         overflow-x: visible;
     }
 
+    /* FLEX 71 - menu em COLUNA com flex-wrap e align-content
+       flex-direction: column empilha os links; como a lista tem altura
+       fixa, flex-wrap manda os que não cabem para uma segunda coluna
+       ao lado (3 links em cada), em vez de formar uma lista comprida.
+       align-content: flex-start junta as duas colunas à esquerda; sem
+       ele (padrão stretch) as colunas se espalhariam pela largura toda */
     .menu-lista {
         flex-direction: column;
         flex-wrap: wrap;
@@ -2011,7 +2023,9 @@ p {
         padding-left: var(--espaco-lg);
     }
 
-    /* Botões do banner um embaixo do outro */
+    /* FLEX 72 - flex-direction: column
+       os botões do banner, que ficavam lado a lado, passam a ficar
+       um embaixo do outro */
     .hero-botoes {
         flex-direction: column;
         width: 100%;
@@ -2082,14 +2096,16 @@ p {
         padding: var(--espaco-xl) var(--espaco-md);
     }
 
-    /* Rodapé em COLUNA: marca e colunas de links empilhadas.
-       flex: none evita que o flex-basis vire altura na coluna */
+    /* FLEX 73 - flex-flow: column nowrap
+       rodapé em COLUNA: a marca e as três colunas de links,
+       que ficavam lado a lado, passam a ficar empilhadas */
     .rodape-colunas {
         flex-flow: column nowrap;
         row-gap: var(--espaco-lg);
     }
 
-    /* marca e colunas usam a altura do próprio conteúdo */
+    /* flex: none evita que o flex-basis (280px e 160px) vire ALTURA
+       na coluna; assim marca e colunas usam a altura do próprio conteúdo */
     .rodape-marca,
     .rodape-coluna {
         flex: none;
@@ -2101,3 +2117,72 @@ p {
         align-items: flex-start;
     }
 }
+
+
+/* =========================================================
+   RESUMO DO TRABALHO - BOX MODEL E FLEXBOX
+   Lista para conferência. Cada item está marcado com o mesmo
+   número em um comentário logo acima da regra correspondente.
+
+   ---------------------------------------------------------
+   BOX MODEL (20 elementos)
+   conteúdo (width/height) | padding | border | margin
+   ---------------------------------------------------------
+   01 .cabecalho-conteudo  width 100%, max-width 1200px, height 72px | 0 24px | border-bottom 1px | margin 0 auto
+   02 .logo                height 40px | 4px 12px | 1.5px | margin-right 16px
+   03 .menu-link           height 40px | 0 2px | border-bottom 2px (transparente, colorida no hover) | margin 0 4px
+   04 .sacola              height 40px | 0 16px | 1px | margin-left 8px
+   05 .sacola-contador     22px x 22px | 2px | 1px | margin-left 2px
+   06 .hero                width 100%, min-height 560px | 80px 24px | border-bottom 1px | margin-bottom 48px
+   07 .hero-conteudo       width 100%, max-width 1200px | 8px 0 8px 48px | border-left 2px | margin 0 auto
+   08 .hero-selo           height 28px | 0 16px | 1px | margin-bottom 4px
+   09 .botao               min-width 180px, height 52px | 0 28px | 1px | margin-top 8px
+   10 .secao-cabecalho     width 100% | padding-bottom 24px | border-bottom 1px | margin-bottom 48px
+   11 .categoria-card      width 100%, min-height 220px | 24px | 1px | margin-bottom 4px
+   12 .categoria-numero    36px x 36px | 4px | 1px | margin-bottom 16px
+   13 .produto             min-width 200px | 8px | 1px | margin-bottom 8px
+   14 .produto-selo        height 26px | 0 10px | 1px | margin 8px
+   15 .tamanho             min-width 34px, height 30px | 0 6px | 1px | margin 0 (espaço vem do gap)
+   16 .botao-sacola        width 100%, height 44px | 0 16px | 1px | margin-top auto
+   17 .barra-aviso         width 100%, height 36px | 0 16px | border-bottom 2px | margin 0 (encosta no topo)
+   18 .destaque-ficha      width 100%, max-width 480px | 8px 24px | 1px | margin 8px 0
+   19 .destaque-imagem     height 600px | 12px | 1px | margin-right 80px
+   20 .destaque-legenda    height 34px | 0 16px | 1px | margin 24px
+
+   Também completos (21 a 32): .vantagens-lista, .vantagem-icone,
+   .depoimento, .depoimento-produto, .depoimento-avatar, .sobre-numeros,
+   .newsletter-caixa, .newsletter-campo, .newsletter-botao,
+   .contato-item, .rodape e .integrante.
+
+   ---------------------------------------------------------
+   FLEXBOX (20 usos com efeito visível)
+   propriedade: valor | elemento | o que acontece na tela
+   ---------------------------------------------------------
+   FLEX 01  display: flex                 .cabecalho-conteudo  logo, menu e sacola na mesma linha
+   FLEX 01  justify-content: space-between .cabecalho-conteudo logo na esquerda e sacola na direita
+   FLEX 01  align-items: center           .cabecalho-conteudo  os três blocos centralizados na altura
+   FLEX 03  gap: 24px                     .menu-lista          espaço igual entre os links do menu
+   FLEX 08  flex-direction: column        .hero-conteudo       selo, título, texto e botões empilhados
+   FLEX 19  flex-wrap: wrap               .vitrine-grade       cards descem de linha quando não cabem
+   FLEX 20  flex-basis: calc(25% - 18px)  .produto             4 cards por linha no computador
+   FLEX 22  flex-grow: 1                  .produto-info        botões de todos os cards alinhados embaixo
+   FLEX 28  flex-direction: row-reverse   .destaque            foto à esquerda, mesmo vindo depois no HTML
+   FLEX 31  display: inline-flex          .etiqueta            etiqueta do tamanho do texto
+   FLEX 38  flex: 1 1 220px               .vantagem            quatro vantagens dividindo a linha
+   FLEX 39  flex-shrink: 0                .vantagem-icone      ícone não é espremido pelo texto
+   FLEX 44  align-self: flex-start        .depoimento-produto  etiqueta não estica na largura do card
+   FLEX 50  flex: 2 1 400px               .sobre-texto         coluna de texto cresce o dobro da do título
+   FLEX 61  flex-flow: row wrap           .rodape-colunas      colunas do rodapé lado a lado, com quebra
+   FLEX 69  order: 3                      .menu (tablet)       menu vai para a linha de baixo do cabeçalho
+   FLEX 70  order: -1                     .destaque-imagem     foto acima do texto no tablet e celular
+   FLEX 71  align-content: flex-start     .menu-lista (celular) as duas colunas de links ficam juntas
+   FLEX 72  flex-direction: column        .hero-botoes (celular) botões do banner um embaixo do outro
+   FLEX 73  flex-flow: column nowrap      .rodape-colunas (celular) rodapé empilhado em coluna
+
+   Propriedades exigidas e onde aparecem nesta lista:
+   display: flex (01), display: inline-flex (31), flex-direction (08, 28, 72),
+   flex-wrap (19), flex-flow (61, 73), justify-content (01), align-items (01),
+   align-content (71), align-self (44), order (69, 70), flex-grow (22),
+   flex-shrink (39), flex-basis (20), flex (38, 50) e gap (03).
+   No total o arquivo tem 73 marcações FLEX e 32 de BOX MODEL.
+   ========================================================= */
